@@ -3,7 +3,7 @@ package com.naze.numblechatbot.data.local.model
 import androidx.room.Entity
 
 @Entity(tableName = "setting")
-data class SettingModel(
+data class Setting(
     var temperature: Double = 1.0,
     var frequencyPenalty: Double = 0.0,
 ) {

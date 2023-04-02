@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "chat")
-data class ChatModel(
+data class Chat(
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0,
     var message: String,

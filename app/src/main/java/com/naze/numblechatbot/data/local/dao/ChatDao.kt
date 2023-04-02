@@ -4,13 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.naze.numblechatbot.data.local.model.ChatModel
+import com.naze.numblechatbot.data.local.model.Chat
 
 @Dao
 interface ChatDao {
     @Insert
-    suspend fun insert(chat:ChatModel)
+    suspend fun insert(chat:Chat)
 
     @Query("SELECT * FROM chat")
-    fun getAll(): LiveData<List<ChatModel>>
+    fun getAll(): LiveData<List<Chat>>
 }
