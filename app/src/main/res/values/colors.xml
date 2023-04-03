@@ -12,5 +12,8 @@
     <color name="text_color_white">#FFFFFF</color>
     <color name="text_color_main">#007e74</color>
 
+    <color name="text_color_answer">#FFFFFFFF</color>
+    <color name="text_color_question">#FF000000</color>
+
     <color name="btn_send">#FF018786</color>
 </resources>
