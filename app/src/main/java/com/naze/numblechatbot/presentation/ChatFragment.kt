@@ -10,5 +10,13 @@ import com.naze.numblechatbot.util.binding.BindingFragment
 class ChatFragment : BindingFragment<FragmentChatBinding>(R.layout.fragment_chat) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.btnSetting.setOnClickListener {
+            parentFragmentManager.beginTransaction().apply {
+                replace(R.id.fl, SettingFragment(),"Setting")
+                addToBackStack(null)
+                commit()
+            }
+        }
     }
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="app_bar_height">50dp</dimen>
+
+    <dimen name="icon_height">32dp</dimen>
+
+    <dimen name="chat_height">48dp</dimen>
+    <dimen name="send_btn_length">28dp</dimen>
+
+</resources>
