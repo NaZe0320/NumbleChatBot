@@ -1,9 +1,12 @@
 package com.naze.numblechatbot.data.local.model
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity(tableName = "setting")
 data class Setting(
+    @PrimaryKey(autoGenerate = true)
+    var id: Int,
     var temperature: Double = 1.0,
     var frequencyPenalty: Double = 0.0,
 ) {
