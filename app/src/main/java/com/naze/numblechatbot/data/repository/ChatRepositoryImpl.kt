@@ -2,6 +2,7 @@ package com.naze.numblechatbot.data.repository
 
 import android.content.Context
 import android.util.Log
+import com.google.gson.JsonSyntaxException
 import com.naze.numblechatbot.data.local.dao.ChatDao
 import com.naze.numblechatbot.data.local.model.Chat
 import com.naze.numblechatbot.data.remote.api.GptAPI
@@ -10,7 +11,7 @@ import com.naze.numblechatbot.domain.repository.ChatRepository
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
 import retrofit2.HttpException
-import retrofit2.http.HTTP
+import java.io.IOException
 import javax.inject.Inject
 
 class ChatRepositoryImpl @Inject constructor(
@@ -26,18 +27,23 @@ class ChatRepositoryImpl @Inject constructor(
         //Room 에 데이터 넣기
         coroutineScope {
             try {
-                api.question(
+                return@coroutineScope api.question(
                     RequestGPT(
                         prompt = chat.message,
                         maxTokens = 3900,
                         model = "text-davinci-003"
                     )
                 )
-            }catch (e: HttpException) {
-
-                Log.e("HttpException", "$e")
-                //429 - "message": "You exceeded your current quota, please check your plan and billing details.","type": "insufficient_quota",
+            } catch (e: HttpException) {
+                Log.e("ChatRepositoryImpl", "HttpException ${e.message()}")
+            } catch (e: JsonSyntaxException) {
+                Log.e("ChatRepositoryImpl", "JsonSyntaxException ${e.message}")
+            } catch (e: IOException) {
+                Log.e("ChatRepositoryImpl", "IOException ${e.message}")
+            } catch (e: Exception) {
+                Log.e("ChatRepositoryImpl", "Exception ${e.message}")
             }
         }
+
     }
 }
