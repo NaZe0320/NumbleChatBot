@@ -9,4 +9,5 @@ interface ChatRepository {
     suspend fun getChat(): List<Chat>
     suspend fun insertChat(chat: Chat)
     suspend fun question(question: String): ChatResponse
+    suspend fun deleteAll()
 }

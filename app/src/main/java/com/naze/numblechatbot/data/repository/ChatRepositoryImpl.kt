@@ -64,4 +64,8 @@ class ChatRepositoryImpl @Inject constructor(
         }
         return response
     }
+
+    override suspend fun deleteAll() {
+        chatDao.deleteAll()
+    }
 }

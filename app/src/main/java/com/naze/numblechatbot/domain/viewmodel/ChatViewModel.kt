@@ -65,4 +65,10 @@ class ChatViewModel @Inject constructor(
         }
 
     }
+
+    fun deleteAllChat() {
+        viewModelScope.launch {
+            chatRepository.deleteAll()
+        }
+    }
 }

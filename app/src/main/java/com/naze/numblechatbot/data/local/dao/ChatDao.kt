@@ -13,4 +13,7 @@ interface ChatDao {
 
     @Query("SELECT * FROM chat")
     suspend fun getAll(): List<Chat>
+
+    @Query("DELETE FROM chat")
+    suspend fun deleteAll()
 }
