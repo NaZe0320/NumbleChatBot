@@ -7,6 +7,7 @@ import com.naze.numblechatbot.data.local.dao.ChatDao
 import com.naze.numblechatbot.data.local.model.Chat
 import com.naze.numblechatbot.data.remote.api.GptAPI
 import com.naze.numblechatbot.data.remote.model.request.RequestGPT
+import com.naze.numblechatbot.data.remote.model.response.ResponseGPT
 import com.naze.numblechatbot.domain.repository.ChatRepository
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
@@ -23,27 +24,32 @@ class ChatRepositoryImpl @Inject constructor(
         TODO("Not yet implemented")
     }
 
-    override suspend fun insertChat(chat: Chat) {
+    override suspend fun insertChat(chat: Chat) :String{
         //Room 에 데이터 넣기
+        var response: String
         coroutineScope {
             try {
-                return@coroutineScope api.question(
+                response = api.question(
                     RequestGPT(
                         prompt = chat.message,
                         maxTokens = 3900,
                         model = "text-davinci-003"
                     )
-                )
+                ).choices[0].text
             } catch (e: HttpException) {
+                response = e.message()
                 Log.e("ChatRepositoryImpl", "HttpException ${e.message()}")
             } catch (e: JsonSyntaxException) {
+                response = if (e.message.isNullOrEmpty()) "오류" else e.message.toString()
                 Log.e("ChatRepositoryImpl", "JsonSyntaxException ${e.message}")
             } catch (e: IOException) {
+                response = if (e.message.isNullOrEmpty()) "오류" else e.message.toString()
                 Log.e("ChatRepositoryImpl", "IOException ${e.message}")
             } catch (e: Exception) {
+                response = if (e.message.isNullOrEmpty()) "오류" else e.message.toString()
                 Log.e("ChatRepositoryImpl", "Exception ${e.message}")
             }
         }
-
+        return response
     }
 }
