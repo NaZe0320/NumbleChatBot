@@ -9,6 +9,7 @@ import com.naze.numblechatbot.R
 import com.naze.numblechatbot.data.local.model.Chat
 import com.naze.numblechatbot.data.local.model.ChatType
 import com.naze.numblechatbot.databinding.ItemChatAnswerBinding
+import com.naze.numblechatbot.databinding.ItemChatErrorBinding
 import com.naze.numblechatbot.databinding.ItemChatQuestionBinding
 import com.naze.numblechatbot.util.ItemDiffCallback
 
@@ -29,6 +30,7 @@ class ChatAdapter(): ListAdapter<Chat, RecyclerView.ViewHolder>(
         return when (viewType) {
             TYPE_ANSWER -> AnswerViewHolder(ItemChatAnswerBinding.inflate(inflater, parent, false))
             TYPE_QUESTION -> QuestionViewHolder(ItemChatQuestionBinding.inflate(inflater, parent,false))
+            TYPE_ERROR -> ErrorViewHolder(ItemChatErrorBinding.inflate(inflater, parent,false))
             else -> throw IllegalArgumentException("Unknown viewType: $viewType")
         }
     }
@@ -40,6 +42,9 @@ class ChatAdapter(): ListAdapter<Chat, RecyclerView.ViewHolder>(
                 holder.bind(item)
             }
             is AnswerViewHolder -> {
+                holder.bind(item)
+            }
+            is ErrorViewHolder -> {
                 holder.bind(item)
             }
             else -> throw IllegalArgumentException("Unknown ViewHolder type: ${holder.javaClass.simpleName}")
@@ -67,6 +72,14 @@ class ChatAdapter(): ListAdapter<Chat, RecyclerView.ViewHolder>(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Chat) {
             binding.tvChatAnswer.text = item.message
+        }
+    }
+
+    inner class ErrorViewHolder(
+        private val binding: ItemChatErrorBinding,
+    ) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: Chat) {
+            binding.tvChatError.text = item.message
         }
     }
 }
