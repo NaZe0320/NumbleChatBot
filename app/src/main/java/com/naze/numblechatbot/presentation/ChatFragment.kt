@@ -39,7 +39,7 @@ class ChatFragment : BindingFragment<FragmentChatBinding>(R.layout.fragment_chat
 
         binding.btnSend.setOnClickListener {
             if (binding.etChat.text.isNotEmpty()) {
-                viewModel.addQuestion(binding.etChat.text.toString())
+
                 binding.etChat.text.clear()
             } else {
                 requireContext().showToast("빈 칸은 입력할 수 없습니다.")

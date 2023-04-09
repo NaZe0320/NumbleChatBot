@@ -27,11 +27,4 @@ class ChatViewModel @Inject constructor(
         }
     }*/
 
-    fun addQuestion(question: String) {
-        _chat.value = _chat.value + Chat(question, ChatType.QUESTION)
-        viewModelScope.launch {
-            _chat.value = _chat.value +
-                Chat(chatRepository.insertChat(Chat(question, ChatType.QUESTION)), ChatType.ANSWER)
-        }
-    }
 }

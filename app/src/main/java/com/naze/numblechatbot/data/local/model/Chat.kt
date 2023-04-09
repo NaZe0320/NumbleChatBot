@@ -6,7 +6,8 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "chat")
 data class Chat(
     var message: String,
-    var type: ChatType
+    var type: ChatType,
+    var time: Long,
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0
