@@ -33,7 +33,9 @@ class ChatRepositoryImpl @Inject constructor(
                     RequestGPT(
                         prompt = chat.message,
                         maxTokens = 3900,
-                        model = "text-davinci-003"
+                        model = "text-davinci-003",
+                        temperature = null,
+                        frequencyPenalty = null
                     )
                 ).choices[0].text
             } catch (e: HttpException) {

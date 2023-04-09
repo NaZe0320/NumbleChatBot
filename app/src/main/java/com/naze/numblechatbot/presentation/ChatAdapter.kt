@@ -21,6 +21,7 @@ class ChatAdapter(): ListAdapter<Chat, RecyclerView.ViewHolder>(
     companion object {
         const val TYPE_QUESTION = 0
         const val TYPE_ANSWER = 1
+        const val TYPE_ERROR = 2
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -49,6 +50,7 @@ class ChatAdapter(): ListAdapter<Chat, RecyclerView.ViewHolder>(
         return when (getItem(position).type) {
             ChatType.ANSWER -> TYPE_ANSWER
             ChatType.QUESTION -> TYPE_QUESTION
+            ChatType.ERROR -> TYPE_ERROR
         }
     }
 

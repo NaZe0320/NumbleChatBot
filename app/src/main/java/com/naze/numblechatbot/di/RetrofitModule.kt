@@ -1,7 +1,7 @@
 package com.naze.numblechatbot.di
 
 import com.naze.numblechatbot.data.remote.api.GptAPI
-import com.naze.numblechatbot.util.AuthInterceptor
+import com.naze.numblechatbot.data.remote.service.AuthInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
