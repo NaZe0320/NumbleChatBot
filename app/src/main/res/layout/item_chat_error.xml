@@ -18,12 +18,12 @@
             android:layout_height="wrap_content"
             android:maxWidth="280dp"
             android:textSize="@dimen/tv_chat_text_size"
-            android:textColor="@color/text_color_question"
+            android:textColor="@color/text_color_error"
             android:paddingHorizontal="@dimen/tv_chat_padding_horizontal"
             android:paddingVertical="@dimen/tv_chat_padding_vertical"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:background="@color/background_question"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@color/background_error"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" />
 

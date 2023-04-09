@@ -22,7 +22,8 @@
             android:paddingHorizontal="@dimen/tv_chat_padding_horizontal"
             android:paddingVertical="@dimen/tv_chat_padding_vertical"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:background="@drawable/shape_rectangle_round_corner_answer"
+            android:background="@drawable/shape_rectangle_round_corner_chat"
+            android:backgroundTint="@color/background_answer"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" />

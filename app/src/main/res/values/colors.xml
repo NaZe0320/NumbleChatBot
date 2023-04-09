@@ -14,6 +14,10 @@
 
     <color name="text_color_answer">#FFFFFFFF</color>
     <color name="text_color_question">#FF000000</color>
+    <color name="text_color_error">#000000</color>
 
+    <color name="background_answer">#007E74</color>
+    <color name="background_question">#F5F5F5</color>
+    <color name="background_error">#FFBABA</color>
     <color name="btn_send">#FF018786</color>
 </resources>
