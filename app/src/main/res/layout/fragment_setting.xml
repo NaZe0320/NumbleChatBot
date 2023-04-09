@@ -42,6 +42,7 @@
             android:layout_height="64dp"
             android:hint="Temperature"
             android:paddingHorizontal="16dp"
+            android:inputType="number"
             android:background="@drawable/shape_rectangle_round_corner"
             app:layout_constraintTop_toTopOf="@id/guideline01"
             app:layout_constraintBottom_toTopOf="@id/et_frequency_penalty"/>
@@ -63,8 +64,9 @@
             android:id="@+id/et_frequency_penalty"
             android:layout_width="match_parent"
             android:layout_height="64dp"
-            android:hint="Temperature"
+            android:hint="Frequency Penalty"
             android:paddingHorizontal="16dp"
+            android:inputType="number"
             android:background="@drawable/shape_rectangle_round_corner"
             app:layout_constraintTop_toBottomOf="@+id/et_temperature"
             app:layout_constraintBottom_toBottomOf="@id/guideline03"/>
