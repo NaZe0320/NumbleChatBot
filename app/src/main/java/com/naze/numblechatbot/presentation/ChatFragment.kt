@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.naze.numblechatbot.R
@@ -12,6 +13,7 @@ import com.naze.numblechatbot.databinding.FragmentChatBinding
 import com.naze.numblechatbot.domain.viewmodel.ChatViewModel
 import com.naze.numblechatbot.util.binding.BindingFragment
 import com.naze.numblechatbot.util.extension.showToast
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -26,6 +28,9 @@ class ChatFragment : BindingFragment<FragmentChatBinding>(R.layout.fragment_chat
 
         setBtnEvent()
         setAdapter()
+
+        viewModel.getChat()
+
     }
 
     private fun setBtnEvent() {
@@ -39,7 +44,7 @@ class ChatFragment : BindingFragment<FragmentChatBinding>(R.layout.fragment_chat
 
         binding.btnSend.setOnClickListener {
             if (binding.etChat.text.isNotEmpty()) {
-
+                viewModel.question(binding.etChat.text.toString())
                 binding.etChat.text.clear()
             } else {
                 requireContext().showToast("빈 칸은 입력할 수 없습니다.")
@@ -55,12 +60,9 @@ class ChatFragment : BindingFragment<FragmentChatBinding>(R.layout.fragment_chat
         }
 
         lifecycleScope.launch {
-            viewModel.chat.collectLatest {
-                chatAdapter.submitList(it) {
-                    binding.rvChatList.smoothScrollToPosition(chatAdapter.itemCount)
-                    chatAdapter.notifyItemInserted(chatAdapter.itemCount)
-                }
-            }
+            viewModel.chat.observe(viewLifecycleOwner, Observer {
+                chatAdapter.submitList(it)
+            })
         }
     }
 }

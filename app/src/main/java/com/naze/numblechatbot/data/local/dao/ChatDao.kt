@@ -12,5 +12,5 @@ interface ChatDao {
     suspend fun insert(chat:Chat)
 
     @Query("SELECT * FROM chat")
-    fun getAll(): LiveData<List<Chat>>
+    suspend fun getAll(): List<Chat>
 }
