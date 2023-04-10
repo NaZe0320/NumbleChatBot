@@ -46,19 +46,19 @@ class ChatRepositoryImpl @Inject constructor(
                     )
                 ).choices[0].text, ChatType.ANSWER)
             } catch (e: HttpException) {
-                response = ChatResponse(e.message(), ChatType.ERROR)
-                Log.e("ChatRepositoryImpl", "HttpException ${e.message()}")
+                response = ChatResponse("HttpException ${e.message}", ChatType.ERROR)
+                Log.e("ChatRepositoryImpl", "HttpException ${e.message}")
             } catch (e: JsonSyntaxException) {
                 response = if (e.message.isNullOrEmpty()) ChatResponse("오류", ChatType.ERROR)
-                else ChatResponse(e.message.toString(), ChatType.ERROR)
+                else ChatResponse("JsonSyntaxException ${e.message}", ChatType.ERROR)
                 Log.e("ChatRepositoryImpl", "JsonSyntaxException ${e.message}")
             } catch (e: IOException) {
                 response = if (e.message.isNullOrEmpty()) ChatResponse("오류", ChatType.ERROR)
-                else ChatResponse(e.message.toString(), ChatType.ERROR)
+                else ChatResponse("IOException ${e.message}", ChatType.ERROR)
                 Log.e("ChatRepositoryImpl", "IOException ${e.message}")
             } catch (e: Exception) {
                 response = if (e.message.isNullOrEmpty()) ChatResponse("오류", ChatType.ERROR)
-                else ChatResponse(e.message.toString(), ChatType.ERROR)
+                else ChatResponse("Exception ${e.message}", ChatType.ERROR)
                 Log.e("ChatRepositoryImpl", "Exception ${e.message}")
             }
         }

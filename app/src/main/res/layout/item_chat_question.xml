@@ -21,6 +21,7 @@
             android:textColor="@color/text_color_question"
             android:paddingHorizontal="@dimen/tv_chat_padding_horizontal"
             android:paddingVertical="@dimen/tv_chat_padding_vertical"
+            android:gravity="end"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:background="@drawable/shape_rectangle_round_corner_chat"
             android:backgroundTint="@color/background_question"

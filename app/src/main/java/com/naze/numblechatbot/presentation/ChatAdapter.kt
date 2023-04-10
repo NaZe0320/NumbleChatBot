@@ -3,6 +3,8 @@ package com.naze.numblechatbot.presentation
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams
+import android.widget.AdapterView.OnItemClickListener
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.naze.numblechatbot.R
@@ -39,12 +41,15 @@ class ChatAdapter(): ListAdapter<Chat, RecyclerView.ViewHolder>(
         val item = getItem(position)
         when (holder) {
             is QuestionViewHolder -> {
+                holder.clear()
                 holder.bind(item)
             }
             is AnswerViewHolder -> {
+                holder.clear()
                 holder.bind(item)
             }
             is ErrorViewHolder -> {
+                holder.clear()
                 holder.bind(item)
             }
             else -> throw IllegalArgumentException("Unknown ViewHolder type: ${holder.javaClass.simpleName}")
@@ -64,6 +69,12 @@ class ChatAdapter(): ListAdapter<Chat, RecyclerView.ViewHolder>(
     ): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Chat) {
             binding.tvChatQuestion.text = item.message
+            binding.tvChatQuestion.layoutParams.width = LayoutParams.WRAP_CONTENT
+            binding.executePendingBindings()
+        }
+
+        fun clear() {
+            binding.tvChatQuestion.text = null
         }
     }
 
@@ -72,6 +83,12 @@ class ChatAdapter(): ListAdapter<Chat, RecyclerView.ViewHolder>(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Chat) {
             binding.tvChatAnswer.text = item.message
+            binding.tvChatAnswer.layoutParams.width = LayoutParams.WRAP_CONTENT
+            binding.executePendingBindings()
+        }
+
+        fun clear() {
+            binding.tvChatAnswer.text = null
         }
     }
 
@@ -80,6 +97,12 @@ class ChatAdapter(): ListAdapter<Chat, RecyclerView.ViewHolder>(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Chat) {
             binding.tvChatError.text = item.message
+            binding.tvChatError.layoutParams.width = LayoutParams.WRAP_CONTENT
+            binding.executePendingBindings()
+        }
+
+        fun clear() {
+            binding.tvChatError.text = null
         }
     }
 }
