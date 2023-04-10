@@ -11,6 +11,7 @@ import com.naze.numblechatbot.R
 import com.naze.numblechatbot.data.local.model.Chat
 import com.naze.numblechatbot.databinding.FragmentChatBinding
 import com.naze.numblechatbot.domain.viewmodel.ChatViewModel
+import com.naze.numblechatbot.domain.viewmodel.SettingViewModel
 import com.naze.numblechatbot.util.binding.BindingFragment
 import com.naze.numblechatbot.util.extension.showToast
 import kotlinx.coroutines.Dispatchers
@@ -21,6 +22,7 @@ import kotlinx.coroutines.launch
 class ChatFragment : BindingFragment<FragmentChatBinding>(R.layout.fragment_chat) {
 
     private val viewModel : ChatViewModel by activityViewModels()
+    private val settingViewModel: SettingViewModel by activityViewModels()
     private val chatAdapter = ChatAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -31,6 +33,21 @@ class ChatFragment : BindingFragment<FragmentChatBinding>(R.layout.fragment_chat
 
         viewModel.getChat()
 
+        getDataStore()
+    }
+
+    private fun getDataStore() {
+        lifecycleScope.launch {
+            settingViewModel.getTemperature(requireContext()).collect {
+                println("Temperature $it")
+            }
+        }
+
+        lifecycleScope.launch {
+            settingViewModel.getFrequencyPenalty(requireContext()).collect {
+                println("Frequency $it")
+            }
+        }
     }
 
     private fun setBtnEvent() {
