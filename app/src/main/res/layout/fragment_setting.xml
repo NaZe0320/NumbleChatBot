@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.SettingFragment">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Setting"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_color_black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/guideline01"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Temperature"
+            android:textSize="@dimen/tv_setting_text_size"
+            android:textColor="@color/text_color_main"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/et_temperature"/>
+
+        <EditText
+            android:id="@+id/et_temperature"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:hint="Temperature"
+            android:paddingHorizontal="16dp"
+            android:inputType="numberDecimal|numberSigned"
+            android:background="@drawable/shape_rectangle_round_corner"
+            app:layout_constraintTop_toTopOf="@id/guideline01"
+            app:layout_constraintBottom_toTopOf="@id/et_frequency_penalty"/>
+
+        <TextView
+            android:id="@+id/tv_frequency_penalty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Frequency Penalty"
+            android:textSize="@dimen/tv_setting_text_size"
+            android:textColor="@color/text_color_main"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/et_frequency_penalty"/>
+
+        <EditText
+            android:id="@+id/et_frequency_penalty"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:hint="Frequency Penalty"
+            android:paddingHorizontal="16dp"
+            android:inputType="numberDecimal|numberSigned"
+            android:background="@drawable/shape_rectangle_round_corner"
+            app:layout_constraintTop_toBottomOf="@+id/et_temperature"
+            app:layout_constraintBottom_toBottomOf="@id/guideline03"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.20" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.7" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_chat_reset"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/btn_setting_height"
+            android:text="Chat Reset"
+            android:textSize="@dimen/btn_setting_text_size"
+            android:textAllCaps="false"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintTop_toTopOf="@id/guideline03"
+            app:layout_constraintBottom_toTopOf="@id/btn_share"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_share"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/btn_setting_height"
+            android:text="Share"
+            android:textSize="@dimen/btn_setting_text_size"
+            android:textAllCaps="false"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintTop_toBottomOf="@id/btn_chat_reset"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -7,4 +7,17 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="text_color_black">#000000</color>
+    <color name="text_color_white">#FFFFFF</color>
+    <color name="text_color_main">#007e74</color>
+
+    <color name="text_color_answer">#FFFFFFFF</color>
+    <color name="text_color_question">#FF000000</color>
+    <color name="text_color_error">#000000</color>
+
+    <color name="background_answer">#007E74</color>
+    <color name="background_question">#F5F5F5</color>
+    <color name="background_error">#FFBABA</color>
+    <color name="btn_send">#FF018786</color>
 </resources>
