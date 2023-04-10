@@ -14,9 +14,10 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+private val Context.myPreferences: DataStore<Preferences> by preferencesDataStore(name = "my_preferences")
+
 @HiltViewModel
 class SettingViewModel @Inject constructor() : ViewModel() {
-    private val Context.myPreferences: DataStore<Preferences> by preferencesDataStore(name = "my_preferences")
 
     private val TEMPERATURE_KEY = doublePreferencesKey("temperature")
     private val FREQUENCY_PENALTY_KEY = doublePreferencesKey("frequency_penalty")

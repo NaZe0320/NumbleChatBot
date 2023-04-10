@@ -39,6 +39,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
                 "Chat" -> {
                     val currentTime = System.currentTimeMillis()
                     if (currentTime - backPressedTime < 2000) {
+                        super.onBackPressed()
                         finish()
                     } else {
                         backPressedTime = currentTime
