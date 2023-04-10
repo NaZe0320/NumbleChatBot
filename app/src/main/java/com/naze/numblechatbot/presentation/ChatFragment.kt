@@ -25,6 +25,9 @@ class ChatFragment : BindingFragment<FragmentChatBinding>(R.layout.fragment_chat
     private val settingViewModel: SettingViewModel by activityViewModels()
     private val chatAdapter = ChatAdapter()
 
+    private var temperature: Double = 0.0
+    private var frequencyPenalty: Double = 0.0
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -40,12 +43,14 @@ class ChatFragment : BindingFragment<FragmentChatBinding>(R.layout.fragment_chat
         lifecycleScope.launch {
             settingViewModel.getTemperature(requireContext()).collect {
                 println("Temperature $it")
+                temperature = it?:1.0
             }
         }
 
         lifecycleScope.launch {
             settingViewModel.getFrequencyPenalty(requireContext()).collect {
                 println("Frequency $it")
+                frequencyPenalty = it?:0.0
             }
         }
     }
@@ -61,7 +66,7 @@ class ChatFragment : BindingFragment<FragmentChatBinding>(R.layout.fragment_chat
 
         binding.btnSend.setOnClickListener {
             if (binding.etChat.text.isNotEmpty()) {
-                viewModel.question(binding.etChat.text.toString())
+                viewModel.question(binding.etChat.text.toString(), temperature, frequencyPenalty)
                 binding.etChat.text.clear()
             } else {
                 requireContext().showToast("빈 칸은 입력할 수 없습니다.")

@@ -8,6 +8,6 @@ import kotlinx.coroutines.flow.Flow
 interface ChatRepository {
     suspend fun getChat(): List<Chat>
     suspend fun insertChat(chat: Chat)
-    suspend fun question(question: String): ChatResponse
+    suspend fun question(question: String, temperature: Double, frequencyPenalty: Double): ChatResponse
     suspend fun deleteAll()
 }

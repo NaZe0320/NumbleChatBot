@@ -31,7 +31,7 @@ class ChatRepositoryImpl @Inject constructor(
         chatDao.insert(chat)
     }
 
-    override suspend fun question(question: String): ChatResponse {
+    override suspend fun question(question: String, temperature: Double, frequencyPenalty: Double): ChatResponse {
         //API 에 전송
         var response: ChatResponse
         coroutineScope {
@@ -41,8 +41,8 @@ class ChatRepositoryImpl @Inject constructor(
                         prompt = question,
                         maxTokens = 3900,
                         model = "text-davinci-003",
-                        temperature = null,
-                        frequencyPenalty = null
+                        temperature = temperature,
+                        frequencyPenalty = frequencyPenalty
                     )
                 ).choices[0].text, ChatType.ANSWER)
             } catch (e: HttpException) {
