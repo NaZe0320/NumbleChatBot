@@ -43,14 +43,14 @@ class ChatFragment : BindingFragment<FragmentChatBinding>(R.layout.fragment_chat
         lifecycleScope.launch {
             settingViewModel.getTemperature(requireContext()).collect {
                 println("Temperature $it")
-                temperature = it?:1.0
+                viewModel.setTemperatureValue(it?:1.0)
             }
         }
 
         lifecycleScope.launch {
             settingViewModel.getFrequencyPenalty(requireContext()).collect {
                 println("Frequency $it")
-                frequencyPenalty = it?:0.0
+                viewModel.setFrequencyPenaltyValue(it?:1.0)
             }
         }
     }
@@ -66,7 +66,7 @@ class ChatFragment : BindingFragment<FragmentChatBinding>(R.layout.fragment_chat
 
         binding.btnSend.setOnClickListener {
             if (binding.etChat.text.isNotEmpty()) {
-                viewModel.question(binding.etChat.text.toString(), temperature, frequencyPenalty)
+                viewModel.question(binding.etChat.text.toString())
                 binding.etChat.text.clear()
             } else {
                 requireContext().showToast("빈 칸은 입력할 수 없습니다.")

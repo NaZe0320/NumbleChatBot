@@ -23,7 +23,18 @@ class ChatViewModel @Inject constructor(
     private val _chat = MutableLiveData<List<Chat>>()
     val chat: LiveData<List<Chat>> get() = _chat
 
-    fun question(question: String, temperature: Double, frequencyPenalty: Double) {
+    var temperature: Double = 0.0
+    var frequencyPenalty: Double = 0.0
+
+    fun setTemperatureValue(t: Double) {
+        temperature = t
+    }
+    fun setFrequencyPenaltyValue(f: Double) {
+        frequencyPenalty = f
+    }
+
+
+    fun question(question: String) {
         viewModelScope.launch {
             setChat(question, ChatType.QUESTION)
             chatRepository.insertChat(

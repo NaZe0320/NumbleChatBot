@@ -19,7 +19,7 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        setTextView()
         setBtn()
         setDataStore()
     }
@@ -27,32 +27,44 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
     private fun setDataStore() {
         binding.etTemperature.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
             if (!hasFocus) {
-                var n = binding.etTemperature.text.toString().toDouble()
-                if (n < 0.0) {
-                    n = 0.0
-                    binding.etTemperature.setText("$n")
-                } else if (n > 2.0) {
-                    n = 2.0
-                    binding.etTemperature.setText("$n")
+                if (binding.etTemperature.text.isNotEmpty()) {
+                    var n = binding.etTemperature.text.toString().toDouble()
+                    if (n < 0.0) {
+                        n = 0.0
+                        binding.tvTemperature.text = "Temperature (current: $n)"
+                        binding.etTemperature.setText("$n")
+                    } else if (n > 2.0) {
+                        n = 2.0
+                        binding.tvTemperature.text = "Temperature (current: $n)"
+                        binding.etTemperature.setText("$n")
+                    }
+                    settingViewModel.saveTemperature(requireContext(), n)
                 }
-                settingViewModel.saveTemperature(requireContext(), n)
             }
         }
         binding.etFrequencyPenalty.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
             if (!hasFocus) {
-                var n = binding.etFrequencyPenalty.text.toString().toDouble()
-                if (n < -2.0) {
-                    n = -2.0
-                    binding.etFrequencyPenalty.setText("$n")
-                } else if (n > 2.0) {
-                    n = 2.0
-                    binding.etFrequencyPenalty.setText("$n")
+                if( binding.etFrequencyPenalty.text.isNotEmpty() ) {
+                    var n = binding.etFrequencyPenalty.text.toString().toDouble()
+                    if (n < -2.0) {
+                        n = -2.0
+                        binding.tvFrequencyPenalty.text = "Frequency Penalty (current: $n)"
+                        binding.etFrequencyPenalty.setText("$n")
+                    } else if (n > 2.0) {
+                        n = 2.0
+                        binding.tvFrequencyPenalty.text = "Frequency Penalty (current: $n)"
+                        binding.etFrequencyPenalty.setText("$n")
+                    }
+                    settingViewModel.saveFrequencyPenalty(requireContext(), n)
                 }
-                settingViewModel.saveFrequencyPenalty(requireContext(), n)
             }
         }
     }
 
+    private fun setTextView() {
+        binding.tvTemperature.text = "Temperature (current: ${viewModel.temperature})"
+        binding.tvFrequencyPenalty.text = "Frequency Penalty (current: ${viewModel.frequencyPenalty})"
+    }
     private fun setBtn() {
         binding.btnChatReset.setOnClickListener {
             viewModel.deleteAllChat()
