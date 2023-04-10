@@ -84,6 +84,7 @@ class ChatFragment : BindingFragment<FragmentChatBinding>(R.layout.fragment_chat
         lifecycleScope.launch {
             viewModel.chat.observe(viewLifecycleOwner, Observer {
                 chatAdapter.submitList(it)
+                binding.rvChatList.scrollToPosition(it.size - 1)
             })
         }
     }
