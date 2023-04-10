@@ -14,18 +14,19 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-private val Context.myPreferences: DataStore<Preferences> by preferencesDataStore(name = "my_preferences")
+private val Context.setPreferences: DataStore<Preferences> by preferencesDataStore(name = "data_preferences")
 
 @HiltViewModel
 class SettingViewModel @Inject constructor() : ViewModel() {
-
-    private val TEMPERATURE_KEY = doublePreferencesKey("temperature")
-    private val FREQUENCY_PENALTY_KEY = doublePreferencesKey("frequency_penalty")
+    companion object {
+        private val TEMPERATURE_KEY = doublePreferencesKey("temperature")
+        private val FREQUENCY_PENALTY_KEY = doublePreferencesKey("frequency_penalty")
+    }
 
     // temperature 값을 저장하는 함수
     fun saveTemperature(context: Context, temperature: Double) {
         viewModelScope.launch {
-            context.myPreferences.edit { preferences ->
+            context.setPreferences.edit { preferences ->
                 preferences[TEMPERATURE_KEY] = temperature
             }
         }
@@ -33,7 +34,7 @@ class SettingViewModel @Inject constructor() : ViewModel() {
 
     // temperature 값을 가져오는 함수
     fun getTemperature(context: Context): Flow<Double?> {
-        return context.myPreferences.data.map { preferences ->
+        return context.setPreferences.data.map { preferences ->
             preferences[TEMPERATURE_KEY]
         }
     }
@@ -41,7 +42,7 @@ class SettingViewModel @Inject constructor() : ViewModel() {
     // frequencyPenalty 값을 저장하는 함수
     fun saveFrequencyPenalty(context: Context, frequencyPenalty: Double) {
         viewModelScope.launch {
-            context.myPreferences.edit { preferences ->
+            context.setPreferences.edit { preferences ->
                 preferences[FREQUENCY_PENALTY_KEY] = frequencyPenalty
             }
         }
@@ -49,7 +50,7 @@ class SettingViewModel @Inject constructor() : ViewModel() {
 
     // frequencyPenalty 값을 가져오는 함수
     fun getFrequencyPenalty(context: Context): Flow<Double?> {
-        return context.myPreferences.data.map { preferences ->
+        return context.setPreferences.data.map { preferences ->
             preferences[FREQUENCY_PENALTY_KEY]
         }
     }
