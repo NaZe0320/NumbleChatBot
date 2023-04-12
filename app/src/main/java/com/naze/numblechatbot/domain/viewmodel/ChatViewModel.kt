@@ -48,10 +48,11 @@ class ChatViewModel @Inject constructor(
         }
         viewModelScope.launch {
             val response = chatRepository.question(question, temperature, frequencyPenalty)
-            setChat(response.chat, response.chatType)
+            val str = response.chat.trimMargin()
+            setChat(str, response.chatType)
             chatRepository.insertChat(
                 Chat(
-                    message = response.chat,
+                    message = str,
                     type = response.chatType,
                     time = Calendar.getInstance().timeInMillis
                 )
