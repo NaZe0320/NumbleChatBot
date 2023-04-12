@@ -23,7 +23,7 @@ object RetrofitModule {
         }
 
         val okHttpClient = OkHttpClient.Builder()
-            .addInterceptor(AuthInterceptor("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"))
+            .addInterceptor(AuthInterceptor("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"))
             .addInterceptor(loggingInterceptor)
             .build()
 
