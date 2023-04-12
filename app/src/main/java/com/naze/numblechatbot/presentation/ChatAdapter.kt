@@ -68,6 +68,7 @@ class ChatAdapter(): ListAdapter<Chat, RecyclerView.ViewHolder>(
         private val binding: ItemChatQuestionBinding,
     ): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Chat) {
+            binding.chat = item
             binding.tvChatQuestion.text = item.message
             binding.tvChatQuestion.layoutParams.width = LayoutParams.WRAP_CONTENT
             binding.executePendingBindings()
@@ -82,6 +83,7 @@ class ChatAdapter(): ListAdapter<Chat, RecyclerView.ViewHolder>(
         private val binding: ItemChatAnswerBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Chat) {
+            binding.chat = item
             binding.tvChatAnswer.text = item.message
             binding.tvChatAnswer.layoutParams.width = LayoutParams.WRAP_CONTENT
             binding.executePendingBindings()
@@ -96,6 +98,7 @@ class ChatAdapter(): ListAdapter<Chat, RecyclerView.ViewHolder>(
         private val binding: ItemChatErrorBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Chat) {
+            binding.chat = item
             binding.tvChatError.text = item.message
             binding.tvChatError.layoutParams.width = LayoutParams.WRAP_CONTENT
             binding.executePendingBindings()

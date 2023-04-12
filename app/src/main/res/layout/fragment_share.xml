@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.ChatFragment">
+
+        <androidx.constraintlayout.utils.widget.ImageFilterButton
+            android:id="@+id/btn_setting"
+            android:layout_width="@dimen/icon_height"
+            android:layout_height="@dimen/icon_height"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_settings"
+            android:scaleType="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.constraintlayout.utils.widget.ImageFilterButton
+            android:id="@+id/btn_share"
+            android:layout_width="@dimen/icon_height"
+            android:layout_height="@dimen/icon_height"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_share"
+            android:scaleType="center"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_setting"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_chat_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginVertical="8dp"
+            app:layout_constraintBottom_toTopOf="@id/et_chat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_setting"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <EditText
+            android:id="@+id/et_chat"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/chat_height"
+            android:hint="채팅을 입력해주세요"
+            android:background="@drawable/shape_rectangle_round_corner"
+            android:paddingStart="16dp"
+            android:paddingEnd="48dp"
+            android:enabled="false"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+        </EditText>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btn_send"
+            android:layout_width="@dimen/send_btn_length"
+            android:layout_height="@dimen/send_btn_length"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_send_disable"
+            android:layout_marginEnd="8dp"
+            android:enabled="false"
+            app:layout_constraintEnd_toEndOf="@id/et_chat"
+            app:layout_constraintTop_toTopOf="@id/et_chat"
+            app:layout_constraintBottom_toBottomOf="@id/et_chat"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
