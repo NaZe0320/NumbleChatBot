@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="chat"
+            type="com.naze.numblechatbot.domain.model.ChatShare" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp">
+
+        <CheckBox
+            android:id="@+id/cb_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="@{chat.checked}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_chat_answer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxWidth="280dp"
+            android:textSize="@dimen/tv_chat_text_size"
+            android:textColor="@color/text_color_answer"
+            android:paddingHorizontal="@dimen/tv_chat_padding_horizontal"
+            android:paddingVertical="@dimen/tv_chat_padding_vertical"
+            android:text="@{chat.message}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:background="@drawable/shape_rectangle_round_corner_chat"
+            android:backgroundTint="@color/background_answer"
+            app:layout_constraintStart_toEndOf="@id/cb_share"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
