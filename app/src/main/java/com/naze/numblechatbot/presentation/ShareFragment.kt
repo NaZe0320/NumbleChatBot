@@ -12,7 +12,6 @@ import com.naze.numblechatbot.R
 import com.naze.numblechatbot.data.local.model.ChatType
 import com.naze.numblechatbot.databinding.FragmentShareBinding
 import com.naze.numblechatbot.domain.viewmodel.ChatViewModel
-import com.naze.numblechatbot.domain.viewmodel.SettingViewModel
 import com.naze.numblechatbot.util.binding.BindingFragment
 import com.naze.numblechatbot.util.extension.showToast
 import kotlinx.coroutines.launch

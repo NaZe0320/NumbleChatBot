@@ -9,10 +9,8 @@ import com.naze.numblechatbot.data.local.model.ChatResponse
 import com.naze.numblechatbot.data.local.model.ChatType
 import com.naze.numblechatbot.data.remote.api.GptAPI
 import com.naze.numblechatbot.data.remote.model.request.RequestGPT
-import com.naze.numblechatbot.data.remote.model.response.ResponseGPT
 import com.naze.numblechatbot.domain.repository.ChatRepository
 import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.flow.Flow
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject

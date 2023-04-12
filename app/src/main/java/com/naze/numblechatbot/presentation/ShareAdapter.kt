@@ -1,20 +1,13 @@
 package com.naze.numblechatbot.presentation
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams
-import android.widget.AdapterView.OnItemClickListener
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.naze.numblechatbot.R
-import com.naze.numblechatbot.data.local.model.Chat
 import com.naze.numblechatbot.data.local.model.ChatType
-import com.naze.numblechatbot.databinding.ItemChatAnswerBinding
 import com.naze.numblechatbot.databinding.ItemChatAnswerShareBinding
-import com.naze.numblechatbot.databinding.ItemChatErrorBinding
 import com.naze.numblechatbot.databinding.ItemChatErrorShareBinding
-import com.naze.numblechatbot.databinding.ItemChatQuestionBinding
 import com.naze.numblechatbot.databinding.ItemChatQuestionShareBinding
 import com.naze.numblechatbot.domain.model.ChatShare
 import com.naze.numblechatbot.util.ItemDiffCallback

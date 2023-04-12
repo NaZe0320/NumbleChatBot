@@ -1,18 +1,12 @@
 package com.naze.numblechatbot.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
-import androidx.datastore.preferences.core.doublePreferencesKey
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import com.naze.numblechatbot.R
 import com.naze.numblechatbot.databinding.ActivityMainBinding
 import com.naze.numblechatbot.util.binding.BindingActivity
-import com.naze.numblechatbot.util.extension.*
+import com.naze.numblechatbot.util.extension.showToast
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {

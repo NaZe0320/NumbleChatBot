@@ -1,23 +1,17 @@
 package com.naze.numblechatbot.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.naze.numblechatbot.R
-import com.naze.numblechatbot.data.local.model.Chat
 import com.naze.numblechatbot.databinding.FragmentChatBinding
 import com.naze.numblechatbot.domain.viewmodel.ChatViewModel
 import com.naze.numblechatbot.domain.viewmodel.SettingViewModel
 import com.naze.numblechatbot.util.binding.BindingFragment
 import com.naze.numblechatbot.util.extension.showToast
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class ChatFragment : BindingFragment<FragmentChatBinding>(R.layout.fragment_chat) {
