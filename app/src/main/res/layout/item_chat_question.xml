@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="chat"
+            type="com.naze.numblechatbot.data.local.model.Chat" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,16 +15,11 @@
         android:layout_margin="4dp">
 
         <TextView
+            style="@style/defaultChatStyle"
             android:id="@+id/tv_chat_question"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:maxWidth="280dp"
-            android:textSize="@dimen/tv_chat_text_size"
             android:textColor="@color/text_color_question"
-            android:paddingHorizontal="@dimen/tv_chat_padding_horizontal"
-            android:paddingVertical="@dimen/tv_chat_padding_vertical"
             android:gravity="end"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:text="@{chat.message}"
             android:background="@drawable/shape_rectangle_round_corner_chat"
             android:backgroundTint="@color/background_question"
             app:layout_constraintEnd_toEndOf="parent"

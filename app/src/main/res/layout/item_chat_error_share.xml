@@ -6,7 +6,7 @@
     <data>
         <variable
             name="chat"
-            type="com.naze.numblechatbot.data.local.model.Chat" />
+            type="com.naze.numblechatbot.domain.model.ChatShare" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,15 +14,25 @@
         android:layout_height="wrap_content"
         android:layout_margin="4dp">
 
+        <CheckBox
+            android:id="@+id/cb_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="@={chat.checked}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <TextView
             style="@style/defaultChatStyle"
-            android:id="@+id/tv_chat_answer"
-            android:textColor="@color/text_color_answer"
+            android:id="@+id/tv_chat_error"
+            android:textColor="@color/text_color_error"
             android:text="@{chat.message}"
+            android:backgroundTint="@color/background_error"
             android:background="@drawable/shape_rectangle_round_corner_chat"
-            android:backgroundTint="@color/background_answer"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cb_share"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

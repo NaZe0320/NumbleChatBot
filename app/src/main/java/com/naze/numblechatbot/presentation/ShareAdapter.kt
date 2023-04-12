@@ -5,15 +5,15 @@ import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.naze.numblechatbot.data.local.model.Chat
 import com.naze.numblechatbot.data.local.model.ChatType
-import com.naze.numblechatbot.databinding.ItemChatAnswerBinding
-import com.naze.numblechatbot.databinding.ItemChatErrorBinding
-import com.naze.numblechatbot.databinding.ItemChatQuestionBinding
+import com.naze.numblechatbot.databinding.ItemChatAnswerShareBinding
+import com.naze.numblechatbot.databinding.ItemChatErrorShareBinding
+import com.naze.numblechatbot.databinding.ItemChatQuestionShareBinding
+import com.naze.numblechatbot.domain.model.ChatShare
 import com.naze.numblechatbot.util.ItemDiffCallback
 
-class ChatAdapter(): ListAdapter<Chat, RecyclerView.ViewHolder>(
-    ItemDiffCallback<Chat>(
+class ShareAdapter(): ListAdapter<ChatShare, RecyclerView.ViewHolder>(
+    ItemDiffCallback<ChatShare>(
         onContentsTheSame = {old, new -> old == new},
         onItemsTheSame = { old, new -> old.id == new.id},
     )
@@ -27,9 +27,9 @@ class ChatAdapter(): ListAdapter<Chat, RecyclerView.ViewHolder>(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return when (viewType) {
-            TYPE_ANSWER -> AnswerViewHolder(ItemChatAnswerBinding.inflate(inflater, parent, false))
-            TYPE_QUESTION -> QuestionViewHolder(ItemChatQuestionBinding.inflate(inflater, parent,false))
-            TYPE_ERROR -> ErrorViewHolder(ItemChatErrorBinding.inflate(inflater, parent,false))
+            TYPE_ANSWER -> AnswerViewHolder(ItemChatAnswerShareBinding.inflate(inflater, parent, false))
+            TYPE_QUESTION -> QuestionViewHolder(ItemChatQuestionShareBinding.inflate(inflater, parent,false))
+            TYPE_ERROR -> ErrorViewHolder(ItemChatErrorShareBinding.inflate(inflater, parent,false))
             else -> throw IllegalArgumentException("Unknown viewType: $viewType")
         }
     }
@@ -62,11 +62,10 @@ class ChatAdapter(): ListAdapter<Chat, RecyclerView.ViewHolder>(
     }
 
     inner class QuestionViewHolder(
-        private val binding: ItemChatQuestionBinding,
+        private val binding: ItemChatQuestionShareBinding,
     ): RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Chat) {
+        fun bind(item: ChatShare) {
             binding.chat = item
-            binding.tvChatQuestion.text = item.message
             binding.tvChatQuestion.layoutParams.width = LayoutParams.WRAP_CONTENT
             binding.executePendingBindings()
         }
@@ -77,11 +76,10 @@ class ChatAdapter(): ListAdapter<Chat, RecyclerView.ViewHolder>(
     }
 
     inner class AnswerViewHolder(
-        private val binding: ItemChatAnswerBinding,
+        private val binding: ItemChatAnswerShareBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Chat) {
+        fun bind(item: ChatShare) {
             binding.chat = item
-            binding.tvChatAnswer.text = item.message
             binding.tvChatAnswer.layoutParams.width = LayoutParams.WRAP_CONTENT
             binding.executePendingBindings()
         }
@@ -92,11 +90,10 @@ class ChatAdapter(): ListAdapter<Chat, RecyclerView.ViewHolder>(
     }
 
     inner class ErrorViewHolder(
-        private val binding: ItemChatErrorBinding,
+        private val binding: ItemChatErrorShareBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Chat) {
+        fun bind(item: ChatShare) {
             binding.chat = item
-            binding.tvChatError.text = item.message
             binding.tvChatError.layoutParams.width = LayoutParams.WRAP_CONTENT
             binding.executePendingBindings()
         }
