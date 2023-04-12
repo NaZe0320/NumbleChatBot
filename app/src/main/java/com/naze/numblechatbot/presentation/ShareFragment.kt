@@ -94,10 +94,9 @@ class ShareFragment : BindingFragment<FragmentShareBinding>(R.layout.fragment_sh
                 }
             }
         }
-        Log.d("TEST","list : ${shareText}")
         val intent= Intent(Intent.ACTION_SEND)
         intent.type = "text/plain"
-        intent.putExtra(Intent.EXTRA_TEXT,shareText)
+        intent.putExtra(Intent.EXTRA_TEXT,shareText.trim())
         startActivity(Intent.createChooser(intent,"공유하기"))
     }
 }
