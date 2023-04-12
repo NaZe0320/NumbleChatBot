@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="defaultChatStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxWidth">280dp</item>
+        <item name="android:textSize">@dimen/tv_chat_text_size</item>
+        <item name="android:paddingStart">@dimen/tv_chat_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/tv_chat_padding_horizontal</item>
+        <item name="android:paddingTop">@dimen/tv_chat_padding_vertical</item>
+        <item name="android:paddingBottom">@dimen/tv_chat_padding_vertical</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
+    </style>
+</resources>
