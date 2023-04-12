@@ -79,7 +79,6 @@ class ChatFragment : BindingFragment<FragmentChatBinding>(R.layout.fragment_chat
         binding.rvChatList.apply {
             adapter = chatAdapter
             layoutManager = LinearLayoutManager(requireContext())
-            animation = null
         }
 
         lifecycleScope.launch {

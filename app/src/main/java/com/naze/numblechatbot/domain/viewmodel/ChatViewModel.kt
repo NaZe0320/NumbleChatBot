@@ -1,11 +1,10 @@
 package com.naze.numblechatbot.domain.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import android.util.Log
+import androidx.lifecycle.*
 import com.naze.numblechatbot.data.local.model.Chat
 import com.naze.numblechatbot.data.local.model.ChatType
+import com.naze.numblechatbot.domain.model.ChatShare
 import com.naze.numblechatbot.domain.repository.ChatRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -22,6 +21,9 @@ class ChatViewModel @Inject constructor(
 ): ViewModel() {
     private val _chat = MutableLiveData<List<Chat>>()
     val chat: LiveData<List<Chat>> get() = _chat
+
+    private val _chatShare = MutableLiveData<List<ChatShare>?>()
+    val chatShare: MutableLiveData<List<ChatShare>?> get() = _chatShare
 
     var temperature: Double = 0.0
     var frequencyPenalty: Double = 0.0
@@ -81,5 +83,11 @@ class ChatViewModel @Inject constructor(
         viewModelScope.launch {
             chatRepository.deleteAll()
         }
+    }
+
+    fun chatToShare() {
+        val chatShareListValue = _chat.value?.map { ChatShare(false, it.message, it.type, it.id) }
+        _chatShare.value = chatShareListValue
+        Log.d("TEST","Chat : ${_chatShare.value}")
     }
 }

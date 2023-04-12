@@ -65,9 +65,18 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
         binding.tvTemperature.text = "Temperature (current: ${viewModel.temperature})"
         binding.tvFrequencyPenalty.text = "Frequency Penalty (current: ${viewModel.frequencyPenalty})"
     }
+
     private fun setBtn() {
         binding.btnChatReset.setOnClickListener {
             viewModel.deleteAllChat()
         }
+
+        binding.btnShare.setOnClickListener {
+            parentFragmentManager.beginTransaction().apply {
+                replace(R.id.fl, ShareFragment(),"Share")
+                commit()
+            }
+        }
+
     }
 }

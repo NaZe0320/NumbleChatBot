@@ -46,6 +46,11 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
                         this.showToast("한 번 더 누르면 종료됩니다.")
                     }
                 }
+                "Share" -> {
+                    val transaction = supportFragmentManager.beginTransaction()
+                    transaction.replace(R.id.fl, ChatFragment(), "Chat")
+                    transaction.commit()
+                }
                 else -> {
                     supportFragmentManager.popBackStackImmediate()
                 }

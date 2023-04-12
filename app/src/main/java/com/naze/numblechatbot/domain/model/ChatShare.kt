@@ -6,4 +6,5 @@ data class ChatShare(
     var checked: Boolean = false,
     var message: String,
     var type: ChatType,
+    var id: Long
 )

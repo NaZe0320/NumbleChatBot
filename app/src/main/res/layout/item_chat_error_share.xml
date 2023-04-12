@@ -18,7 +18,7 @@
             android:id="@+id/cb_share"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="@{chat.checked}"
+            android:checked="@={chat.checked}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -27,6 +27,7 @@
             style="@style/defaultChatStyle"
             android:id="@+id/tv_chat_error"
             android:textColor="@color/text_color_error"
+            android:text="@{chat.message}"
             android:backgroundTint="@color/background_error"
             android:background="@drawable/shape_rectangle_round_corner_chat"
             app:layout_constraintStart_toEndOf="@+id/cb_share"

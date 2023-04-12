@@ -16,10 +16,11 @@ import com.naze.numblechatbot.databinding.ItemChatErrorBinding
 import com.naze.numblechatbot.databinding.ItemChatErrorShareBinding
 import com.naze.numblechatbot.databinding.ItemChatQuestionBinding
 import com.naze.numblechatbot.databinding.ItemChatQuestionShareBinding
+import com.naze.numblechatbot.domain.model.ChatShare
 import com.naze.numblechatbot.util.ItemDiffCallback
 
-class ShareAdapter(): ListAdapter<Chat, RecyclerView.ViewHolder>(
-    ItemDiffCallback<Chat>(
+class ShareAdapter(): ListAdapter<ChatShare, RecyclerView.ViewHolder>(
+    ItemDiffCallback<ChatShare>(
         onContentsTheSame = {old, new -> old == new},
         onItemsTheSame = { old, new -> old.id == new.id},
     )
@@ -70,8 +71,8 @@ class ShareAdapter(): ListAdapter<Chat, RecyclerView.ViewHolder>(
     inner class QuestionViewHolder(
         private val binding: ItemChatQuestionShareBinding,
     ): RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Chat) {
-            binding.tvChatQuestion.text = item.message
+        fun bind(item: ChatShare) {
+            binding.chat = item
             binding.tvChatQuestion.layoutParams.width = LayoutParams.WRAP_CONTENT
             binding.executePendingBindings()
         }
@@ -84,8 +85,8 @@ class ShareAdapter(): ListAdapter<Chat, RecyclerView.ViewHolder>(
     inner class AnswerViewHolder(
         private val binding: ItemChatAnswerShareBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Chat) {
-            binding.tvChatAnswer.text = item.message
+        fun bind(item: ChatShare) {
+            binding.chat = item
             binding.tvChatAnswer.layoutParams.width = LayoutParams.WRAP_CONTENT
             binding.executePendingBindings()
         }
@@ -98,8 +99,8 @@ class ShareAdapter(): ListAdapter<Chat, RecyclerView.ViewHolder>(
     inner class ErrorViewHolder(
         private val binding: ItemChatErrorShareBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Chat) {
-            binding.tvChatError.text = item.message
+        fun bind(item: ChatShare) {
+            binding.chat = item
             binding.tvChatError.layoutParams.width = LayoutParams.WRAP_CONTENT
             binding.executePendingBindings()
         }
